@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="messageBeanKr" class="kr.or.kh.MessageBeanKr"/>
+<!-- 객체를 만드는 것. 뒤의 class는 MessageBeanKr인터페이스를 상속받았음을 뜻한다.
+스프링은 IOC덕분에 new 라는 연산자를 사용하지 않고도 객체를 생성할 수 있다. XML파일을 통해서 -->
+<!-- HTML의 useBean 액션테그랑 같다. 즉 id 는 객체와 같다 -->
+<!-- MessageBean bean = new MessageBean(); 이랑 같다-->
+<!-- 이렇게 생성자함수를 동원해야만 객체를 만들 수 있었는데 XML파일에서는 이렇게 바로 만들 수 있다.  -->
+<!-- 우리는 이것을 IOC컨테이너라고 한다 (즉 이것이 XML파일을 의미한다) -->
+<!-- 이것이 JSP와 Spring의 차이점이다 (IOC와 DI)-->
+<bean id="messageBeanEn" class="kr.or.kh.MessageBeanEn"/>
+<!-- JSP에서는 beans.xml파일이 없다! new로 객체를 불러오기때문 -->
+<!-- 이 beans.xml파일이 IOC이다. -->
+<!-- 즉, JSP와 Spring의 가장 큰 차이점, Spring을 쓰는 이유는 IOC의 유무! (추가로 DI까지) -->
+</beans>
+

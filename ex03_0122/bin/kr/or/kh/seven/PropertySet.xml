@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="propertyset" class="kr.or.kh.seven.PropertySet"></bean>
+	<!-- property 설정 -->
+	<bean id="service" class="kr.or.kh.seven.PropertySetService">
+		<property name=	"propertySet" ref="propertyset" />
+		<!-- name은 변수(PropertySetService의 4행), ref는 setPropertyset 을 부른것이다(PropertySetService의 6행) -->
+	</bean>
+
+</beans>

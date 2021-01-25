@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="obj" class="kr.or.kh.three.BeanFactoryMethodCreation" factory-method="getInstance">
+<!-- 
+위의 문장은
+BeanFactoryMethodCreation obj = new BeanFactoryMethodCreation(); 
+이것과 같은 의미의 문장이다
+-->
+</bean>
+</beans>
+
+<!-- 
+BeanFactoryMethodCreation에서 생성자함수가 private이기에 method를 생성할 수도 없다 그런데 불러올 수 있는 이유는
+factory-method="getInstance 이것 때문이다
+getInstance 를 써서 불러온것이다 
+객체를 쓸 공간이 하나밖에없다=싱글턴패턴 
+-->

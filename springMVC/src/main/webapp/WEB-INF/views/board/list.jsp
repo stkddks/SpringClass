@@ -28,12 +28,11 @@
 						</tr>
 					</thead>
 					<c:forEach items="${list}" var="board">
-					<tr>
+						<tr>
 							<td><c:out value="${board.bno}" /></td>
 							<td><a class='move' href='<c:out value="${board.bno }"/>'>
-							<c:out value="${coard.title }"/>
-							</a>
-							</td>
+									<c:out value="${board.title }" />
+							</a></td>
 							<td><c:out value="${board.writer}" /></td>
 						</tr>
 					</c:forEach>
@@ -42,6 +41,7 @@
 			<!--  end panel-body -->
 		</div>
 		<!-- end panel -->
+		<!--  -->
 	</div>
 </div>
 <!-- /.row -->

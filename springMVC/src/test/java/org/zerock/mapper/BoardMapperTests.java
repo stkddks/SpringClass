@@ -34,15 +34,15 @@ public class BoardMapperTests {
 
 	}
 
-//	@Test
-//	public void testInsertSelectKey() {
-//		BoardVO board = new BoardVO();
-//		board.setTitle("new title select key");
-//		board.setContent("new content select key");
-//		board.setWriter("new writer");
-//		mapper.insertSelectKey(board);
-//		log.info(board);
-//	}
+	@Test
+	public void testInsertSelectKey() {
+		BoardVO board = new BoardVO();
+		board.setTitle("new title select key");
+		board.setContent("new content select key");
+		board.setWriter("new writer");
+		mapper.insertSelectKey(board);
+		log.info(board);
+	}
 	
 	@Test
 	  public void testRead() {

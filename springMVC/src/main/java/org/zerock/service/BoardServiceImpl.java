@@ -22,7 +22,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void register(BoardVO board) {
 		log.info("register......" + board);
-		mapper.insertSelectKey(board);
+//		mapper.insertSelectKey(board);		// 얘는 oracle쓸때 (왜? mysql에서는 번호 자동증가를 안썼어. )
+		mapper.insert(board);
 
 	}
 

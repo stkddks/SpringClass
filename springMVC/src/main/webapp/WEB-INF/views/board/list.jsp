@@ -34,7 +34,8 @@
 						</tr>
 					</thead>
 					<c:forEach items="${list}" var="board">
-						<%-- <!-- 조회페이지 이동 수정 전 -->
+						<%-- 
+						<!-- 조회페이지 이동 수정 전 -->
 						<tr>
 							<td><c:out value="${board.bno}" /></td>
 							<td><a class='move' href='<c:out value="${board.bno }"/>'>
@@ -43,13 +44,14 @@
 							<td><c:out value="${board.writer}" /></td>
 						</tr> 
 						--%>
+						<!-- 조회페이지 이동 수정 후 -->
 						<tr>
-							<!-- 조회페이지 이동 수정 후 -->
 							<td><c:out value="${board.bno}" /></td>
-							<td><a class='move'
-								href='/board/get?bno=<c:out value="${board.bno}"/>'> <c:out
-										value="${board.title}" />
-							</a></td>
+							<td>
+							<a class='move' href='/board/get?bno=<c:out value="${board.bno}"/>'> 
+								<c:out value="${board.title}" />
+							</a>
+							</td>
 							<td><c:out value="${board.writer}" /></td>
 							<%-- <td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.regdate}" /></td>
@@ -59,6 +61,7 @@
 					</c:forEach>
 				</table>
 				<!-- Modal 추가 -->
+				<!-- 
 				<div class="modal" tabindex="-1" role="dialog" id="myModal">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -79,10 +82,10 @@
 									data-dismiss="modal">Close</button>
 							</div>
 						</div>
-						<!-- /.modal-content -->
+						/.modal-content
 					</div>
-					<!-- /.modal-dialog -->
-				</div>
+					/.modal-dialog
+				</div> -->
 				<!-- /.modal -->
 			</div>
 			<!--  end panel-body -->
@@ -92,6 +95,25 @@
 	</div>
 </div>
 <!-- /.row -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>     
 <%@include file="../includes/footer.jsp"%>
 <script type="text/javascript">
 	$(document).ready(

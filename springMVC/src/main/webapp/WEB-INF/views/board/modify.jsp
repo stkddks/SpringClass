@@ -16,13 +16,10 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-
 			<div class="panel-heading">Board Modify</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-
-				<form role="form" action="/board/modify" method="post">
-
+				<form>
 					<input type='hidden' name='pageNum'
 						value='<c:out value="${cri.pageNum }"/>'> <input
 						type='hidden' name='amount'
@@ -53,7 +50,8 @@
 							value='<c:out value="${board.writer}"/>' readonly="readonly">
 					</div>
 
-					<%-- <div class="form-group">
+					<%-- 
+					<div class="form-group">
 						<label>RegDate</label> <input class="form-control" name='regDate'
 							value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${board.regdate}" />'
 							readonly="readonly">
@@ -64,16 +62,15 @@
 							name='updateDate'
 							value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${board.updateDate}" />'
 							readonly="readonly">
-					</div> --%>
+					</div> 
+					--%>
+					
 					<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
 					<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
 					<button type="submit" data-oper='list' class="btn btn-info">List</button>
 				</form>
-
-
 			</div>
 			<!--  end panel-body -->
-
 		</div>
 		<!--  end panel-body -->
 	</div>
@@ -81,6 +78,9 @@
 </div>
 <!-- /.row -->
 
+<%@include file="../includes/footer.jsp"%>
+
+<!-- 
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -119,28 +119,31 @@
 			formObj.submit();
 		});
 	});
-</script>
-<!-- <script type="text/javascript">
-$(document).ready(function() {
-  var formObj = $("form");
+</script> 
+-->
+<script>
+	$(document).ready(function() {
 
-  $('.button').on("click", function(e){
-    
-    e.preventDefault(); 
-    
-    var operation = $(this).data("oper");
-    
-    console.log(operation);
-    
-    if(operation === 'remove'){
-      formObj.attr("action", "/board/remove");      
-    }else if(operation === 'list'){
-      //move to list
-      formObj.attr("action","/board/list").attr("method","get");
-      formObj.empty();
-    }    
-    formObj.submit();
-  });
-});
-</script> -->
-<%@include file="../includes/footer.jsp"%>
+		var formObj = $("form");
+
+		$('.btn').click(function(e) {
+
+			e.preventDefault();
+
+			var operation = $(this).data("oper");
+
+			console.log(operation);
+
+			if (operation === 'list') {
+				self.location = "/board/list";
+			} else if (operation === 'remove') {
+				formObj.attr("action", "/board/remove").attr("method", "post");
+				formObj.submit();
+
+			} else if (operation === 'modify') {
+				formObj.attr("action", "/board/modify").attr("method", "post");
+				formObj.submit();
+			}
+		});
+	});
+</script>

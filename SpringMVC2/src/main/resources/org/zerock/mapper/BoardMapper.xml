@@ -22,5 +22,8 @@
     <select id="read" resultType="org.zerock.domain.BoardVO">
        select * from tbl_board2 where bno=#{bno}
     </select>
+    <delete id="delete">
+    	delete from tbl_board2 where bno=#{bno} 
+    </delete> 
 </mapper>
   

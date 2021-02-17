@@ -45,8 +45,13 @@ public class BoardMapperTests {
   @Test
   public void testRead() {
   //존재하는 게시물 번호로 테스트
-  BoardVO board = mapper.read(5L);
+  BoardVO board = mapper.read(5L);	// 5번 데이터 읽음
   log.info(board);
+  }
+  
+  @Test
+  public void testDelete() {
+	  log.info("DELETE COUNT:"+mapper.delete(3L));	//3번 데이터 삭제
   }
 
 

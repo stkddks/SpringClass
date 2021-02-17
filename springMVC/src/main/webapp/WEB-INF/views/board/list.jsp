@@ -47,11 +47,10 @@
 						<!-- 조회페이지 이동 수정 후 -->
 						<tr>
 							<td><c:out value="${board.bno}" /></td>
-							<td>
-							<a class='move' href='/board/get?bno=<c:out value="${board.bno}"/>'> 
-								<c:out value="${board.title}" />
-							</a>
-							</td>
+							<td><a class='move'
+								href='/board/get?bno=<c:out value="${board.bno}"/>'> <c:out
+										value="${board.title}" />
+							</a></td>
 							<td><c:out value="${board.writer}" /></td>
 							<%-- <td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.regdate}" /></td>
@@ -60,8 +59,28 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<!-- Modal 추가 -->
-				<!-- 
+				
+				<!-- 추가 -->
+				<div class='pull-right'>
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous"><a href="#">Previous</a>
+							</li>
+						</c:if>
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="paginate_button"><a href="#">${num}</a></li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a href="#">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!--  end Pagination -->
+			</div>
+			<!-- Modal 추가 -->
+			<!-- 
 				<div class="modal" tabindex="-1" role="dialog" id="myModal">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -86,34 +105,36 @@
 					</div>
 					/.modal-dialog
 				</div> -->
-				<!-- /.modal -->
-			</div>
-			<!--  end panel-body -->
+			<!-- /.modal -->
 		</div>
-		<!-- end panel -->
-		<!--  -->
+		<!--  end panel-body -->
 	</div>
+	<!-- end panel -->
+	<!--  -->
+</div>
 </div>
 <!-- /.row -->
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>     
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Modal body text goes here.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save
+					changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <%@include file="../includes/footer.jsp"%>
 <script type="text/javascript">
 	$(document).ready(

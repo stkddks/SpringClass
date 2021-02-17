@@ -26,18 +26,33 @@
 	데이터의 값이 여러개이고 bno가 자동증가한다지만 중간데이터를 삭제하면 다음 데이터가 생성될떄 건너띄고 데이터가 생성되는 상황 발생! 그래서 이렇게 해줌으로써 최신의 bno 값을 가져와서 등록하는 것이다
 	 -->
 	 
-	 <!-- <insert id="insertSelectKey">	
+	 <!-- 
+	 <insert id="insertSelectKey">	
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long"> 반환값이 long타입일때 쿼리를 수행해라!
 			select seq_board.nextval from dual
 		</selectKey>	게시글 번호가 몇개인지 확인하겠다는 얘기
 		insert into tbl_board (bno,title,content, writer)
 		values (#{bno}, #{title}, #{content}, #{writer}) 
-	</insert> -->
+	</insert> 
+	-->
 	
 	<select id="read" resultType="org.zerock.domain.BoardVO">	<!-- DB검색을 xml파일로 코딩해서 구현하는 법 --> <!-- 결과타입을 BoardVO로 가져오겠다는 뜻! -->
        select * from tbl_board where bno=#{bno}
     </select>
-	
+    
+	<select id="getListWithPaging"
+    resultType="org.zerock.domain.BoardVO">
+  <![CDATA[
+   select *
+   from (
+   select rownum rn, bno, title, content, writer 
+   from tbl_board order by bno desc
+   where rownum <= #{pageNum} * #{amount}
+      )
+  where rn > (#{pageNum}-1) * #{amount}   
+ 
+  ]]>
+  </select>
 	
 	<delete id="delete">	<!-- DB삭제를 xml파일로 코딩해서 구현하는 법 --> 
       	<!-- delete tbl_board where bno=#{bno} -->	<!-- 얘는 오라클문법! (from이 없다) -->

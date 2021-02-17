@@ -25,5 +25,8 @@
     <delete id="delete">
     	delete from tbl_board2 where bno=#{bno} 
     </delete> 
+    <update id="update">
+       update tbl_board2 set title=#{title}, content=#{content},writer=#{writer},updateDate=NOW() where bno=#{bno}
+    </update>
 </mapper>
   

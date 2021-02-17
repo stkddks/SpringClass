@@ -10,5 +10,5 @@ public interface BoardMapper {
   public List<BoardVO> getList();
   public abstract void insert(BoardVO board);
   public abstract void insertSelectKey(BoardVO board);
-
+  public abstract BoardVO read(Long bno);
 }

@@ -10,11 +10,17 @@
 	<insert id="insert">
     insert into tbl_board2 (bno,title,content,writer,regDate,updateDate) values(#{bno},#{title},#{content},#{writer},NOW(),NOW())
     </insert>
+    <!-- 오라클에 sequence 구형했을 경우 insertSelectKey 가능-->
+    <!-- 
     <insert id="insertSelectKey">
       <selectKey keyProperty="bno" order="BEFORE" resultType="long">
        select seq_board.nextval from dual
       </selectKey>
       insert into tbl_board2 (bno,title,content,writer,regDate,updateDate) values(#{bno},#{title},#{content},#{writer},NOW(),NOW())
-    </insert> 
+    </insert>  
+    -->
+    <select id="read" resultType="org.zerock.domain.BoardVO">
+       select * from tbl_board2 where bno=#{bno}
+    </select>
 </mapper>
   

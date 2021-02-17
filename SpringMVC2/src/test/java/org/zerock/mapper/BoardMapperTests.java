@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.BoardVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -20,4 +21,25 @@ public class BoardMapperTests {
   public void testGetList() {
     mapper.getList().forEach(board -> log.info(board));
   }
+  
+  @Test
+  public void testInsert() {
+  BoardVO board = new BoardVO();
+  board.setTitle("새로작성하는글");
+  board.setContent("새로작성하는내용");
+  board.setWriter("newkh");
+  mapper.insert(board);
+  log.info(board);	//Lombok이 만들어주는 toString()을 이용해서 bno멤버변수(인스턴스변수)의 값을 알아보기 위함
+  }
+
+  @Test
+  public void testInsertSelectKey() {
+  BoardVO board = new BoardVO();
+  board.setTitle("새로작성하는글 select key");
+  board.setContent("새로작성하는내용 select key");
+  board.setWriter("newkh");
+  mapper.insertSelectKey(board);
+  log.info(board);
+  }
+
 }

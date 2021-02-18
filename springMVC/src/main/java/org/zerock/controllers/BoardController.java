@@ -15,8 +15,9 @@ import org.zerock.service.BoardService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@Controller // @Controller 어노테이션이 붙게되면 이제 BoardController가 서블릿이 되는 것이다. // 서블릿에 대한 설정은
-			// servlet-context.xml에 있다.
+@Controller //서블릿
+// @Controller 어노테이션이 붙게되면 이제 BoardController가 서블릿이 되는 것이다. // 서블릿에 대한 설정은
+// servlet-context.xml에 있다.
 @Log4j // 생성자함수를 위한 어노체이션
 @RequestMapping("/board/*") // mapping은 변환을 뜻한다. /board/* 즉, 모든파일을 변환하겠다 라는 의미. (제어를 하겠다)
 @AllArgsConstructor
@@ -32,12 +33,12 @@ public class BoardController {
 //		log.info("list");
 //		model.addAttribute("list", service.getList());
 //	}
-	
+
 	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
-	log.info("list:"+cri);
-	model.addAttribute("list", service.getList(cri));
-	//model.addAttribute("pageMaker", new PageDTO(cri, 123));		//추가
+	public void list(Criteria cri, Model model) {	// cri는 현재페이지 번호와 한페이지안의 게스글 수를 관리 // model은 박스상자
+		log.info("list:" + cri);
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123)); // 추가	// 123 전체게시글 수(임의로 조정해본것)
 	}
 
 	@PostMapping("/register")
@@ -52,7 +53,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping({"/get", "/modify"})
+	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		log.info("get or modify");
 		model.addAttribute("board", service.get(bno));
@@ -77,10 +78,10 @@ public class BoardController {
 		}
 		return "redirect:/board/list";
 	}
-	
+
 	@GetMapping("/register")
 	public void register() {
-		
+
 	}
 
 }

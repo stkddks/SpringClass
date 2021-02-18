@@ -60,7 +60,7 @@
 					</c:forEach>
 				</table>
 				
-				<!-- 추가 -->
+				<!-- page 추가 -->
 				<div class='pull-right'>
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
@@ -77,6 +77,8 @@
 						</c:if>
 					</ul>
 				</div>
+				<!-- /.page 추가 -->
+				
 				<!--  end Pagination -->
 			</div>
 			<!-- Modal 추가 -->

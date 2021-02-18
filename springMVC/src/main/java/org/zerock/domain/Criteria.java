@@ -21,8 +21,8 @@ public class Criteria {
   }
 
   public Criteria(int pageNum, int amount) {
-    this.pageNum = pageNum;
-    this.amount = amount;
+    this.pageNum = pageNum;		// 현재 보여주고 있는 페이지
+    this.amount = amount;		// 페이지 마다의 게시글 수
   }
   
 //  public String[] getTypeArr() {

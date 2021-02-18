@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -52,6 +54,16 @@ public class BoardControllerTests {
 			.param("amount", "50"))
 			.andReturn().getModelAndView().getModelMap());
 	}
+	
+	@Test
+	public void testPageDTO() {
+		log.info("-------");
+		Criteria cri = new Criteria();
+		cri.setPageNum(25);
+		PageDTO pageDTO = new PageDTO(cri, 251);
+		log.info(pageDTO);
+	}
+	
 
 	@Test
 	public void testRegister() throws Exception {

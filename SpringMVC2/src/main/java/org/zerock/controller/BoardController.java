@@ -11,7 +11,6 @@ import org.zerock.domain.BoardVO;
 import org.zerock.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
-import lombok.AllArgsConstructor;	// BoardController는 BoardService에 대해서 의존적이므로 @AllArgsConstructor를 이용해서 생성자를 만들고 자동으로 주입 
 
 @Controller		// @Controller어노테이션을 추가해서 스프링의 빈으로 인식할수있게 한다
 @Log4j

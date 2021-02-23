@@ -10,11 +10,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.service.BoardService;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller		// @Controller어노테이션을 추가해서 스프링의 빈으로 인식할수있게 한다
 @Log4j
 @RequestMapping("/board/*")		// @RequestMapping을 통해서 '/board'로 시작하는 모든 처리를 BoardController가 하도록 지정
+@AllArgsConstructor
 public class BoardController {
 
 	private BoardService service;

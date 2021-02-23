@@ -33,15 +33,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
-		log.info("modify......" + board);
-		return mapper.update(board) == 1;
+	public int modify(BoardVO board) {
+		return mapper.update(board);
 	}
 
 	@Override
-	public boolean remove(Long bno) {
-		log.info("remove...." + bno);
-		return mapper.delete(bno) == 1;
+	public int remove(Long bno) {
+		
+		return mapper.delete(bno);
 	}
 
 //	@Override
@@ -58,5 +57,11 @@ public class BoardServiceImpl implements BoardService {
 	log.info("get List with criteria: " + cri);
 
 	return mapper.getListWithPaging(cri);
+	}
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
 	}
 }

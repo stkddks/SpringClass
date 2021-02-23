@@ -5,34 +5,37 @@
 
 <mapper namespace="org.zerock.mapper.BoardMapper">
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
-		select * from tbl_board2 where bno > 0
+		select * from tbl_board2 where
+		bno > 0
 	</select>
 	<insert id="insert">
-    insert into tbl_board2 (bno,title,content,writer,regDate,updateDate) values(#{bno},#{title},#{content},#{writer},NOW(),NOW())
-    </insert>
-    <!-- 오라클에 sequence 구형했을 경우 insertSelectKey 가능-->
-    <!-- 
-    <insert id="insertSelectKey">
-      <selectKey keyProperty="bno" order="BEFORE" resultType="long">
-       select seq_board.nextval from dual
-      </selectKey>
-      insert into tbl_board2 (bno,title,content,writer,regDate,updateDate) values(#{bno},#{title},#{content},#{writer},NOW(),NOW())
-    </insert>  
-    -->
-    <select id="read" resultType="org.zerock.domain.BoardVO">
-       select * from tbl_board2 where bno=#{bno}
-    </select>
-    <delete id="delete">
-    	delete from tbl_board2 where bno=#{bno} 
-    </delete> 
-    <update id="update">
-       update tbl_board2 set title=#{title}, content=#{content},writer=#{writer},updateDate=NOW() where bno=#{bno}
-    </update>
-    <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
-   select * 
-   from tbl_board2 
-   <!-- order by bno desc  -->
-   limit #{pageNum}, #{amount}
-  </select>
+		insert into tbl_board2 (bno,title,content,writer,regDate,updateDate)
+		values(#{bno},#{title},#{content},#{writer},NOW(),NOW())
+	</insert>
+	<!-- 오라클에 sequence 구형했을 경우 insertSelectKey 가능 -->
+	<!-- <insert id="insertSelectKey"> <selectKey keyProperty="bno" order="BEFORE" 
+		resultType="long"> select seq_board.nextval from dual </selectKey> insert 
+		into tbl_board2 (bno,title,content,writer,regDate,updateDate) values(#{bno},#{title},#{content},#{writer},NOW(),NOW()) 
+		</insert> -->
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board2 where bno=#{bno}
+	</select>
+	<delete id="delete">
+		delete from tbl_board2 where bno=#{bno}
+	</delete>
+	<update id="update">
+		update tbl_board2 set title=#{title},
+		content=#{content},writer=#{writer},updateDate=NOW() where bno=#{bno}
+	</update>
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.BoardVO">
+		select *
+		from tbl_board2
+		<!-- order by bno desc -->
+		limit #{pageNum}, #{amount}
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board2 where bno > 0
+	</select>
 </mapper>
   

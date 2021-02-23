@@ -19,7 +19,7 @@
 			<div class="panel-heading">Board Modify</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<form>
+				<form role="form" action="/board/modify" method="post">
 					<input type='hidden' name='pageNum'
 						value='<c:out value="${cri.pageNum }"/>'> <input
 						type='hidden' name='amount'
@@ -64,28 +64,32 @@
 
 <%@include file="../includes/footer.jsp"%>
 <script>
-	$(document).ready(function() {
 
-		var formObj = $("form");
-
-		$('.btn').click(function(e) {
-
-			e.preventDefault();
-
-			var operation = $(this).data("oper");
-
-			console.log(operation);
-
-			if (operation === 'list') {
-				self.location = "/board/list";
-			} else if (operation === 'remove') {
-				formObj.attr("action", "/board/remove").attr("method", "post");
-				formObj.submit();
-
-			} else if (operation === 'modify') {
-				formObj.attr("action", "/board/modify").attr("method", "post");
-				formObj.submit();
-			}
-		});
-	});
+$(document).ready(function() {
+	
+	var formObj = $("form");
+	
+	$('.btn').click(function(e){
+	
+		e.preventDefault();
+		
+		var operation = $(this).data("oper");
+		
+		console.log(operation);
+		
+		if(operation === 'list'){
+			self.location ="/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}";
+		}else if(operation === 'remove'){
+			formObj.attr("action","/board/remove")
+			.attr("method", "post");
+			formObj.submit();
+			
+		}else if(operation === 'modify'){
+			formObj.attr("action","/board/modify")
+			.attr("method", "post");
+			formObj.submit();
+		}
+	})
+	
+})
 </script>

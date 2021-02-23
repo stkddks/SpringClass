@@ -38,14 +38,12 @@ public class BoardController {
     	rttr.addFlashAttribute("result", board.getBno());
     	return "redirect:/board/list";
     }
-    
-    @GetMapping("/get")		// 조회에 대한 처리
+    @GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("bno") Long bno, Model model) {
-	
-	 log.info("/get  ");
-	 model.addAttribute("board", service.get(bno));
-    }
-    
+		log.info("get or modify");
+		model.addAttribute("board", service.get(bno));
+	}
+
     @PostMapping("/modify")		// 수정에 대한 처리
     public String modify(BoardVO board, RedirectAttributes rttr) {
     	log.info("modify:" + board);

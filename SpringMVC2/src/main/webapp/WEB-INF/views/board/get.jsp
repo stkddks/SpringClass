@@ -35,18 +35,6 @@
 					<label>Writer</label> <input class="form-control" name='writer'
 						value='<c:out value="${board.writer }"/>' readonly="readonly">
 				</div>
-				<%-- 번호 넘기기 수정 전 - 더러운코드 --%>
-				<%-- 
-				<button data-oper='modify' class="btn btn-default">
-					<a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a>
-				</button>
-				<button data-oper='list' class="btn btn-info">
-					<a href="/board/list">List</a>
-				</button> 
-				--%>
-				<!-- /.여기까지 -->
-
-				<%-- 번호 넘기기 수정 전 - form을 이용한 깔끔한코드 --%>
 				<button data-oper='modify' class="btn btn-default">Modify</button>
 				<button data-oper='list' class="btn btn-info">List</button>
 				<form id='operForm' action="/boad/modify" method="get">

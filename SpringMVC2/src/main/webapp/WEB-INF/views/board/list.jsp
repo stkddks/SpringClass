@@ -1,19 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>List Page</h1>
-</body>
-</html>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
@@ -40,7 +27,7 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>#번호</th>
+							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -57,7 +44,7 @@
 							</a></td>
 							<td><c:out value="${board.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${board.regdate}" /></td>
+									value="${board.regDate}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.updateDate}" /></td>
 						</tr>
@@ -70,7 +57,6 @@
 	</div>
 	<!-- end panel -->
 	<!--  -->
-</div>
 </div>
 <!-- /.row -->
 <div id="myModal" class="modal" tabindex="-1" role="dialog">

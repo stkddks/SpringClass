@@ -28,5 +28,11 @@
     <update id="update">
        update tbl_board2 set title=#{title}, content=#{content},writer=#{writer},updateDate=NOW() where bno=#{bno}
     </update>
+    <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+   select * 
+   from tbl_board2 
+   <!-- order by bno desc  -->
+   limit #{pageNum}, #{amount}
+  </select>
 </mapper>
   

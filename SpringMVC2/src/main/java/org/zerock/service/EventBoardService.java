@@ -10,7 +10,7 @@ public interface EventBoardService {
 	public abstract EventVO get(Long bno);
 	public abstract int update(EventVO board);
 	public abstract int delete(Long bno);
-//	public abstract List<EventVO> getList();
+	public abstract List<EventVO> getList();
 	public abstract List<EventVO> getList(Criteria cri);
 	 public abstract int getTotal(Criteria cri);
 

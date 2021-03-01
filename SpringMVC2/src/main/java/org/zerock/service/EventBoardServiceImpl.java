@@ -44,13 +44,13 @@ public class EventBoardServiceImpl implements EventBoardService {
 
 	}
 
-//	@Override
-//	public List<EventVO> getList() {
-//
-//		log.info("getList..........");
-//
-//		return eventDao.boardList();
-//	}
+	@Override
+	public List<EventVO> getList() {
+
+		log.info("getList..........");
+
+		return eventDao.getList();
+	}
 
 	@Override
 	public List<EventVO> getList(Criteria cri) {

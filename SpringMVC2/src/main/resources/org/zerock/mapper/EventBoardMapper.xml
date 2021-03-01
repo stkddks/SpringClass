@@ -6,12 +6,9 @@
 <mapper namespace="org.zerock.mapper.EventBoardDAO">
 	<insert id="register">
 		INSERT INTO KOCO_BOARD(BOARD_CATEGORY, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, READCOUNT, FILE_NAME, THUMBNAIL, USER_NO)
-		VALUES (#{category},#{title},#{content},NOW(),#{readCount},#{fileName},#{thumbnail},#{writer})
+		VALUES(#{boardCategory}, #{boardTitle}, #{boardContent}, NOW(), #{boardReadcount}, #{fileName, jdbcType=VARCHAR}, NULL, #{userNo})
 	</insert>
-	<select id="getList" resultType="org.zerock.mapper.EventVO">
-		SELECT * FROM KOCO_BOARD
-	</select>
-	<select id="get" resultType="org.zerock.mapper.EventVO">
+	<select id="get" resultType="org.zerock.domain.EventVO">
 		select * from KOCO_BOARD where BOARD_NO=#{bno}
 	</select>
 	<update id="update">
@@ -21,8 +18,11 @@
 	<delete id="delete">
 		delete from KOCO_BOARD where boardNo=#{bno}
 	</delete>
+	<select id="getList" resultType="org.zerock.domain.EventVO">
+		SELECT BOARD_NO, BOARD_TITLE, USER_NO, BOARD_REGDATE, READCOUNT FROM KOCO_BOARD
+	</select>
 	<select id="getListWithPaging" resultType="org.zerock.domain.EventVO">
-		select *
+		select BOARD_NO, BOARD_TITLE, USER_NO, BOARD_REGDATE, READCOUNT
 		from KOCO_BOARD
 		<!-- order by boardNo desc -->
 		limit #{pageNum}, #{amount}

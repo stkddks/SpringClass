@@ -24,17 +24,6 @@ public class EventBoardController {
 
 	private EventBoardService service;
 	
-//	@GetMapping("/register")		// 등록
-//	public void eventRegister() {
-//		
-//	}
-//	@PostMapping("/register")	// 등록에 대한 처리
-//	public String eventRegister(EventVO event, RedirectAttributes rttr) {
-//		log.info("register: " + event);
-//		service.register(event);
-//		rttr.addFlashAttribute("result", event.getBoardNo());
-//		return "redirect:/eventboard/list";
-//	}
 	@GetMapping("/register")
 	public void register() {
 
@@ -47,18 +36,18 @@ public class EventBoardController {
     }
     
 	
-//    @GetMapping("/list")		// 목록에 대한 처리
-//    public void eventList(Model model) {
-//    	log.info("list");
-//    	model.addAttribute("list", service.getList());
-//    }
+    @GetMapping("/list")		// 목록에 대한 처리
+    public void list(Model model) {
+    	log.info("list");
+    	model.addAttribute("list", service.getList());
+    }
 
-	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
-		model.addAttribute("list", service.getList(cri));
-		int total = service.getTotal(cri);
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
-	}
+//	@GetMapping("/list")
+//	public void list(Criteria cri, Model model) {
+//		model.addAttribute("list", service.getList(cri));
+//		int total = service.getTotal(cri);
+//		model.addAttribute("pageMaker", new PageDTO(cri, total));
+//	}
 
     
 //    @GetMapping("/get")			// 상세보기에 대한 처리

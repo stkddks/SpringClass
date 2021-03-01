@@ -9,13 +9,21 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:mysql://localhost:3306/mysql?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
+	</bean> -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl"
+			value="jdbc:log4jdbc:mysql://bbr123.cafe24.com:3306/bbr123?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="bbr123"></property>
+		<property name="password" value="alstjr95!"></property>
 	</bean>
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">

@@ -25,6 +25,6 @@
 		base-package="org.zerock.service">
 	</context:component-scan> -->
 	
-	<context:component-scan base-package="org.zerock.controller" />
+	<context:component-scan base-package="org.zerock.*" />
 	
 </beans:beans>

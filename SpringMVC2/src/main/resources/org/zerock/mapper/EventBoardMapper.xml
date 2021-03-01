@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.EventBoardDAO">
+	<insert id="register">
+		INSERT INTO KOCO_BOARD(BOARD_CATEGORY, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, READCOUNT, FILE_NAME, THUMBNAIL, USER_NO)
+		VALUES (#{category},#{title},#{content},NOW(),#{readCount},#{fileName},#{thumbnail},#{writer})
+	</insert>
+	<select id="getList" resultType="org.zerock.mapper.EventVO">
+		SELECT * FROM KOCO_BOARD
+	</select>
+	<select id="get" resultType="org.zerock.mapper.EventVO">
+		select * from KOCO_BOARD where BOARD_NO=#{bno}
+	</select>
+	<update id="update">
+		update KOCO_BOARD 
+		set BOARD_TITLE=#{title},boardContent=#{content},boardRegdate=NOW(),fileName=#{fileName},thumbnail=#{thumbnail},userNo=#{writer} where boardNo=#{bno}
+	</update>
+	<delete id="delete">
+		delete from KOCO_BOARD where boardNo=#{bno}
+	</delete>
+	<select id="getListWithPaging" resultType="org.zerock.domain.EventVO">
+		select *
+		from KOCO_BOARD
+		<!-- order by boardNo desc -->
+		limit #{pageNum}, #{amount}
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) 
+		from KOCO_BOARD 
+		where BOARD_NO > 0
+	</select>
+</mapper>

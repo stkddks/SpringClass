@@ -26,52 +26,30 @@ public class EventBoardController {
 	
 	@GetMapping("/register")
 	public void register() {
-
 	}
+	
     @PostMapping("/register")	// 등록에 대한 처리
     public String register(EventVO event, RedirectAttributes rttr) {
     	service.register(event);
     	rttr.addFlashAttribute("result", event.getBoardNo());
     	return "redirect:/eventboard/list";
     }
-    
-	
-    @GetMapping("/list")		// 목록에 대한 처리
-    public void list(Model model) {
-    	log.info("list");
-    	model.addAttribute("list", service.getList());
-    }
 
-//	@GetMapping("/list")
-//	public void list(Criteria cri, Model model) {
-//		model.addAttribute("list", service.getList(cri));
-//		int total = service.getTotal(cri);
-//		model.addAttribute("pageMaker", new PageDTO(cri, total));
-//	}
+	@GetMapping("/list")
+	public void getList(Criteria cri, Model model) {
+//		log.info("list: " + cri);
+		model.addAttribute("list", service.getList(cri));
+		int total = service.getTotal(cri);
+//		log.info("total: " + total);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
 
-    
-//    @GetMapping("/get")			// 상세보기에 대한 처리
-//    public void eventGet(@RequestParam("bno") Long bno, Model model) {
-//    	log.info("/get  ");
-//    	model.addAttribute("event", service.get(bno));
-//    }
-    
     @GetMapping({"/get","/update"})
-    public void get(@RequestParam("bno")Long bno,@ModelAttribute("cri") Criteria cri,Model model) {
+    public void get(@RequestParam("boardNo")int bno,@ModelAttribute("cri") Criteria cri,Model model) {
  	   log.info("/get or modify");
  	   model.addAttribute("event",service.get(bno));
     }
 
-//    @PostMapping("/update")		// 수정에 대한 처리
-//    public String eventUpdate(EventVO event, RedirectAttributes rttr) {
-//    	log.info("modify:" + event);
-//   
-//    	if (service.modify(event)) {
-//    		rttr.addFlashAttribute("result", "success");
-//    	}
-//    	return "redirect:/eventboard/list";
-//    }
-    
     @PostMapping("/update")
 	public String update(EventVO event,Criteria cri, RedirectAttributes rttr) {
 		
@@ -85,20 +63,8 @@ public class EventBoardController {
 		return "redirect:/eventboard/list";
 	}
 
-    
-//    @PostMapping("/delete")		// 삭제에 대한 처리
-//    public String EventDelete(@RequestParam("bno") Long bno, RedirectAttributes rttr)
-//    {
-//
-//    	log.info("remove..." + bno);
-//    	if (service.remove(bno)) {
-//    		rttr.addFlashAttribute("result", "success");
-//    	}
-//    	return "redirect:/eventboard/list";
-//    }
-    
     @PostMapping("/delete")
-	public String delete(@RequestParam("bno") Long bno,Criteria cri, RedirectAttributes rttr) {
+	public String delete(@RequestParam("bno") int bno,Criteria cri, RedirectAttributes rttr) {
 		
 		int count = service.delete(bno);
 		
@@ -109,5 +75,41 @@ public class EventBoardController {
 		rttr.addAttribute("amount",cri.getAmount());
 		return "redirect:/eventboard/list";
 	}
+	
+//  @GetMapping("/list")		// 목록에 대한 처리
+//  public void list(Model model) {
+//  	log.info("list");
+//  	model.addAttribute("list", service.getList());
+//  }
 
+    
+//  @GetMapping("/get")			// 상세보기에 대한 처리
+//  public void eventGet(@RequestParam("bno") Long bno, Model model) {
+//  	log.info("/get  ");
+//  	model.addAttribute("event", service.get(bno));
+//  }
+
+//  @PostMapping("/update")		// 수정에 대한 처리
+//  public String eventUpdate(EventVO event, RedirectAttributes rttr) {
+//  	log.info("modify:" + event);
+// 
+//  	if (service.modify(event)) {
+//  		rttr.addFlashAttribute("result", "success");
+//  	}
+//  	return "redirect:/eventboard/list";
+//  }
+
+    
+//  @PostMapping("/delete")		// 삭제에 대한 처리
+//  public String EventDelete(@RequestParam("bno") Long bno, RedirectAttributes rttr)
+//  {
+//
+//  	log.info("remove..." + bno);
+//  	if (service.remove(bno)) {
+//  		rttr.addFlashAttribute("result", "success");
+//  	}
+//  	return "redirect:/eventboard/list";
+//  }
+  
+    
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.EventVO;
-import org.zerock.mapper.EventBoardDAO;
+import org.zerock.mapper.EventBoardMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -18,52 +18,52 @@ import lombok.extern.log4j.Log4j;
 public class EventBoardServiceImpl implements EventBoardService {
 
 	@Setter(onMethod_ = @Autowired)
-	private EventBoardDAO eventDao;
+	private EventBoardMapper mapper;
 	
 
 	@Override
 	public void register(EventVO event) {
-		eventDao.register(event);
+		mapper.register(event);
 
 	}
 
 	@Override
-	public EventVO get(Long bno) {
-		return eventDao.get(bno);
+	public EventVO get(int bno) {
+		return mapper.get(bno);
 	}
 
 	@Override
 	public int update(EventVO event) {
-		return eventDao.update(event);
+		return mapper.update(event);
 
 	}
 
 	@Override
-	public int delete(Long bno) {
-		return eventDao.delete(bno);
+	public int delete(int bno) {
+		return mapper.delete(bno);
 
 	}
 
-	@Override
-	public List<EventVO> getList() {
-
-		log.info("getList..........");
-
-		return eventDao.getList();
-	}
+//	@Override
+//	public List<EventVO> getList() {
+//
+//		log.info("getList..........");
+//
+//		return mapper.getList();
+//	}
 
 	@Override
 	public List<EventVO> getList(Criteria cri) {
 
 	log.info("get List with criteria: " + cri);
 
-	return eventDao.getListWithPaging(cri);
+	return mapper.getListWithPaging(cri);
 	}
 	
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("get total count");
-		return eventDao.getTotalCount(cri);
+		return mapper.getTotalCount(cri);
 	}
 
 }

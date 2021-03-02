@@ -19,7 +19,7 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://bbr123.cafe24.com:3306", "bbr123", "alstjr95!");
 			log.info(conn);
 
 		} catch (SQLException e) {

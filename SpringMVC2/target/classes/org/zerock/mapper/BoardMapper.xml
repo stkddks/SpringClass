@@ -38,4 +38,3 @@
 		select count(*) from tbl_board2 where bno > 0
 	</select>
 </mapper>
-  

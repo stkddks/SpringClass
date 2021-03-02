@@ -31,6 +31,10 @@ public class PageDTO {
     // 게시글 수에 따라서 페이지 수가 달라지는 결정적인 코드
     // ex) 게시글수가 123개이면 페이지수가 20까지가 아닌 13까지 나와야한다, 한페이지에 10게시글씩 나올경우!
 
+//    int pageNum = cri.getPageNum();
+//    if(pageNum>1) {
+//    	pageNum+=realEnd;
+//    }
     this.prev = this.startPage > 1;
 
     this.next = this.endPage < realEnd;

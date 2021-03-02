@@ -15,12 +15,12 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class EventBoardMapperTests {
 	@Setter(onMethod = @__({ @Autowired }))
-	private EventBoardDAO mapper;
+	private EventBoardMapper mapper;
 
-	@Test
-	public void testGetList() {
-		mapper.getList().forEach(event -> log.info(event));
-	}
+//	@Test
+//	public void testGetList() {
+//		mapper.getList().forEach(event -> log.info(event));
+//	}
 
 	@Test
 	public void testInsert() {

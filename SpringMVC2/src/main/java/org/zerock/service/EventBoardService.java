@@ -7,10 +7,10 @@ import org.zerock.domain.EventVO;
 
 public interface EventBoardService {
 	public abstract void register(EventVO event);
-	public abstract EventVO get(Long bno);
+	public abstract EventVO get(int bno);
 	public abstract int update(EventVO board);
-	public abstract int delete(Long bno);
-	public abstract List<EventVO> getList();
+	public abstract int delete(int bno);
+//	public abstract List<EventVO> getList();
 	public abstract List<EventVO> getList(Criteria cri);
 	 public abstract int getTotal(Criteria cri);
 

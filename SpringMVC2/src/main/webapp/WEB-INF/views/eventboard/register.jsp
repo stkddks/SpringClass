@@ -4,48 +4,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 
-
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Board Register</h1>
 	</div>
-	<!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
 
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-
-			<div class="panel-heading">Board Register</div>
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 
 				<form role="form" action="/eventboard/register" method="post">
+				<%-- <form:hidden path="3"/> --%>
 					<div class="form-group">
-						<label>Title</label> <input class="form-control" name='boardTitle'>
+						<label>제목</label>
+						<input name="boardTitle" class="form-control"/>
 					</div>
 
 					<div class="form-group">
-						<label>Text area</label>
-						<textarea class="form-control" rows="3" name='boardContent'></textarea>
+						<label>내용</label>
+						<textarea class="form-control" name='boardContent' rows="20"></textarea>
 					</div>
-
 					<div class="form-group">
-						<label>Writer</label> <input class="form-control" name='userNo'>
+						<label>첨부파일</label>
+						<input name="fileName" class="form-control" type="file" accept="image/*"/>
 					</div>
-					<button type="submit" class="btn btn-default">Submit
-						Button</button>
-					<button type="reset" class="btn btn-default">Reset Button</button>
+					<button type="reset"  style="float: right" class="btn btn-default">Reset Button</button>
+					<button type="submit" style="float: right" class="btn btn-default">등록하기</button>
 				</form>
 
 			</div>
-			<!--  end panel-body -->
-
 		</div>
-		<!--  end panel-body -->
 	</div>
-	<!-- end panel -->
 </div>
-<!-- /.row -->
 <%@include file="../includes/footer.jsp"%>

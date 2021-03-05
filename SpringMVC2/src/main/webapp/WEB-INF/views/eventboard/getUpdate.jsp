@@ -50,7 +50,6 @@
 							value='<c:out value="${event.userNo}"/>' readonly="readonly">
 					</div>
 					<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-					<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
 					<button type="submit" data-oper='list' class="btn btn-info">List</button>
 				</form>
 			</div>
@@ -79,13 +78,13 @@ $(document).ready(function() {
 		
 		if(operation === 'list'){
 			self.location ="/eventboard/list?pageNum=${cri.pageNum}&amount=${cri.amount}";
-		}else if(operation === 'remove'){
+		}else if(operation === 'delete'){
 			formObj.attr("action","/eventboard/delete")
 			.attr("method", "post");
 			formObj.submit();
 			
 		}else if(operation === 'modify'){
-			formObj.attr("action","/eventboard/update")
+			formObj.attr("action","/eventboard/postUpdate")
 			.attr("method", "post");
 			formObj.submit();
 		}

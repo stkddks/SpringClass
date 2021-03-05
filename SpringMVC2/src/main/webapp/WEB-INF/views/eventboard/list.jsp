@@ -13,13 +13,13 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel-heading">
-			Event Board !!
-			<button id='regBtn' type="button" class="btn btn-xs pull-right">Register New Event</button>
+			<!-- Event Board !! -->
+			<button id='regBtn' type="button" class="btn btn-xs pull-right">Register New Event</button><br>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">List</div>
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">List</div> -->
 			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+<!-- </div> -->
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">

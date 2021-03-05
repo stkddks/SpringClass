@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +14,11 @@ import org.zerock.domain.EventVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.EventBoardService;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
-
 @Controller		
-@Log4j
 @RequestMapping("/eventboard/*")		
-@AllArgsConstructor
 public class EventBoardController {
 
+	@Autowired
 	private EventBoardService service;
 	
 	@GetMapping("/register")
@@ -36,24 +33,26 @@ public class EventBoardController {
     }
 
 	@GetMapping("/list")
-	public void getList(Criteria cri, Model model) {
-//		log.info("list: " + cri);
+	public String list(Criteria cri, Model model) {
 		model.addAttribute("list", service.getList(cri));
 		int total = service.getTotal(cri);
-//		log.info("total: " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		return "eventboard/list";
 	}
 
-    @GetMapping({"/get","/update"})
+    @GetMapping({"/get"})
     public void get(@RequestParam("boardNo")int bno,@ModelAttribute("cri") Criteria cri,Model model) {
- 	   log.info("/get or modify");
  	   model.addAttribute("event",service.get(bno));
     }
+    @GetMapping({"/getUpdate"})
+    public void update(@RequestParam("boardNo")int bno,@ModelAttribute("cri") Criteria cri,Model model) {
+ 	   model.addAttribute("event",service.getUpdate(bno));
+    }
 
-    @PostMapping("/update")
-	public String update(EventVO event,Criteria cri, RedirectAttributes rttr) {
+    @PostMapping("/postUpdate")
+	public String update(@RequestParam("pageNum")int pageNum,@RequestParam("amount")int amount,EventVO event,Criteria cri, RedirectAttributes rttr) {
 		
-		int count = service.update(event);
+		int count = service.postUpdate(event);
 		
 		if(count == 1) {
 			rttr.addFlashAttribute("result", "success");
@@ -61,10 +60,12 @@ public class EventBoardController {
 		rttr.addAttribute("pageNum",cri.getPageNum());
 		rttr.addAttribute("amount",cri.getAmount());
 		return "redirect:/eventboard/list";
+//		return "redirect:/eventboard/list?pageNum={pageNum}&amount={amount}";
+		
 	}
 
     @PostMapping("/delete")
-	public String delete(@RequestParam("bno") int bno,Criteria cri, RedirectAttributes rttr) {
+	public String delete(@RequestParam("boardNo") int bno,Criteria cri, RedirectAttributes rttr) {
 		
 		int count = service.delete(bno);
 		

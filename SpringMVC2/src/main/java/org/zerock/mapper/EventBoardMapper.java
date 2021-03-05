@@ -1,18 +1,21 @@
 package org.zerock.mapper;
 
 import java.util.List;
+
+import org.zerock.domain.Board2VO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.EventVO;
 
 public interface EventBoardMapper {
 
 //	 public List<EventVO> getList();
-	 public List<EventVO> getListWithPaging(Criteria cri);
-	 public abstract void register(EventVO event);
-	 public abstract EventVO get(int boardNo);
-	 public abstract int delete(int boardNo);
-	 public abstract int update(EventVO event);
+	 public List<Board2VO> getListWithPaging(Criteria cri);
+	 public void register(EventVO event);
+	 public EventVO get(int boardNo);
+	 public int delete(int boardNo);
+	 public EventVO getUpdate(int boardNo);
+	 public int postUpdate(EventVO event);
 	 public int getTotalCount(Criteria cri);
-//	 public abstract int boardSearch(Long boardNo);
-//	 public abstract void insertSelectKey(EventVO event);
+//	 public int boardSearch(Long boardNo);
+//	 public void insertSelectKey(EventVO event);
 }
